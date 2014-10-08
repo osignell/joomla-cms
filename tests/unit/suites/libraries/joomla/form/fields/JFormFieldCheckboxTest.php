@@ -17,7 +17,7 @@ require_once __DIR__ . '/TestHelpers/JHtmlFieldCheckbox-helper-dataset.php';
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldCheckboxTest extends TestCaseDatabase
+class JFormFieldCheckboxTest extends TestCase
 {
 	/**
 	 * Backup of the SERVER superglobal
@@ -41,7 +41,7 @@ class JFormFieldCheckboxTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->backupServer = $_SERVER;
 

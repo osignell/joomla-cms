@@ -43,7 +43,7 @@ class FinderIndexerTest extends TestCaseDatabase
 		// Store the factory state so we can mock the necessary objects
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 		JFactory::$session     = $this->getMockSession();
 
 		// Set up our mock database

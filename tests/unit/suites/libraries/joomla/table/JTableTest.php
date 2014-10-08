@@ -139,14 +139,7 @@ class JTableTest extends TestCaseDatabase
 					'Null' => 'NO',
 					'Default' => '\'0\'',
 					'Key' => ''
-				),
-				'params' => (object) array(
-					'Field' => 'params',
-					'Type' => 'TEXT',
-					'Null' => 'NO',
-					'Default' => '\'\'',
-					'Key' => ''
-				),
+				)
 			),
 			$this->object->getFields()
 		);
@@ -354,8 +347,7 @@ class JTableTest extends TestCaseDatabase
 	 */
 	public function testBind()
 	{
-		TestReflection::setValue($this->object, '_jsonEncode', array('params'));
-		$this->object->bind(array('id1' => 25, 'id2' => 50, 'title' => 'My Title', 'params' => array('param1' => 'value1', 'param2' => 25)));
+		$this->object->bind(array('id1' => 25, 'id2' => 50, 'title' => 'My Title'));
 
 		$this->assertEquals(
 			25,
@@ -370,13 +362,6 @@ class JTableTest extends TestCaseDatabase
 		$this->assertEquals(
 			'My Title',
 			$this->object->title
-		);
-
-		// Check the object is json encoded properly
-		$this->assertEquals(
-			'{"param1":"value1","param2":25}',
-			$this->object->params,
-			'The object should be json encoded'
 		);
 	}
 

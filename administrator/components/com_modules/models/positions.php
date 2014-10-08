@@ -106,8 +106,7 @@ class ModulesModelPositions extends JModelList
 					->where($this->_db->quoteName('client_id') . ' = ' . (int) $clientId);
 				if ($search)
 				{
-					$search = $this->_db->quote('%' . str_replace(' ', '%', $this->_db->escape(trim($search), true) . '%'));
-					$query->where('position LIKE ' . $search);
+					$query->where('position LIKE ' . $this->_db->quote('%' . $this->_db->escape($search, true) . '%'));
 				}
 
 				$this->_db->setQuery($query);

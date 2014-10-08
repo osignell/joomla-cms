@@ -12,22 +12,20 @@ defined('_JEXEC') or die;
 // Include the helper functions only once
 require_once __DIR__ . '/helper.php';
 
-JLoader::register('JCategoryNode', JPATH_BASE . '/libraries/legacy/categories/categories.php');
+$cacheid = md5(serialize($module->module));
 
-$cacheid = md5($module->id);
-
-$cacheparams               = new stdClass;
-$cacheparams->cachemode    = 'id';
-$cacheparams->class        = 'ModArticlesCategoriesHelper';
-$cacheparams->method       = 'getList';
+$cacheparams = new stdClass;
+$cacheparams->cachemode = 'id';
+$cacheparams->class = 'ModArticlesCategoriesHelper';
+$cacheparams->method = 'getList';
 $cacheparams->methodparams = $params;
-$cacheparams->modeparams   = $cacheid;
+$cacheparams->modeparams = $cacheid;
 
 $list = JModuleHelper::moduleCache($module, $params, $cacheparams);
 
 if (!empty($list))
 {
 	$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
-	$startLevel      = reset($list)->getParent()->level;
+	$startLevel = reset($list)->getParent()->level;
 	require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default'));
 }

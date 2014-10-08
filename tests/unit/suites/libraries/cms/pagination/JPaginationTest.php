@@ -31,7 +31,7 @@ class JPaginationTest extends TestCase
 		$this->saveFactoryState();
 
 		JFactory::$language = $this->getMockLanguage();
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 	}
 
 	/**

@@ -56,43 +56,43 @@ class JClientFtp
 	 * @var    resource  Socket resource
 	 * @since  12.1
 	 */
-	protected $_conn = null;
+	private $_conn = null;
 
 	/**
 	 * @var    resource  Data port connection resource
 	 * @since  12.1
 	 */
-	protected $_dataconn = null;
+	private $_dataconn = null;
 
 	/**
 	 * @var    array  Passive connection information
 	 * @since  12.1
 	 */
-	protected $_pasv = null;
+	private $_pasv = null;
 
 	/**
 	 * @var    string  Response Message
 	 * @since  12.1
 	 */
-	protected $_response = null;
+	private $_response = null;
 
 	/**
 	 * @var    integer  Timeout limit
 	 * @since  12.1
 	 */
-	protected $_timeout = 15;
+	private $_timeout = 15;
 
 	/**
 	 * @var    integer  Transfer Type
 	 * @since  12.1
 	 */
-	protected $_type = null;
+	private $_type = null;
 
 	/**
 	 * @var    array  Array to hold ascii format file extensions
 	 * @since   12.1
 	 */
-	protected $_autoAscii = array(
+	private $_autoAscii = array(
 		"asp",
 		"bat",
 		"c",
@@ -121,7 +121,7 @@ class JClientFtp
 	 * @var    array
 	 * @since  12.1
 	 */
-	protected $_lineEndings = array('UNIX' => "\n", 'WIN' => "\r\n");
+	private $_lineEndings = array('UNIX' => "\n", 'WIN' => "\r\n");
 
 	/**
 	 * @var    array  JClientFtp instances container.
@@ -194,27 +194,27 @@ class JClientFtp
 		$signature = $user . ':' . $pass . '@' . $host . ":" . $port;
 
 		// Create a new instance, or set the options of an existing one
-		if (!isset(static::$instances[$signature]) || !is_object(static::$instances[$signature]))
+		if (!isset(self::$instances[$signature]) || !is_object(self::$instances[$signature]))
 		{
-			static::$instances[$signature] = new static($options);
+			self::$instances[$signature] = new static($options);
 		}
 		else
 		{
-			static::$instances[$signature]->setOptions($options);
+			self::$instances[$signature]->setOptions($options);
 		}
 
 		// Connect to the server, and login, if requested
-		if (!static::$instances[$signature]->isConnected())
+		if (!self::$instances[$signature]->isConnected())
 		{
-			$return = static::$instances[$signature]->connect($host, $port);
+			$return = self::$instances[$signature]->connect($host, $port);
 
 			if ($return && $user !== null && $pass !== null)
 			{
-				static::$instances[$signature]->login($user, $pass);
+				self::$instances[$signature]->login($user, $pass);
 			}
 		}
 
-		return static::$instances[$signature];
+		return self::$instances[$signature];
 	}
 
 	/**

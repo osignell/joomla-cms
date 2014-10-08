@@ -86,20 +86,4 @@ class JDatabaseQuerySqliteTest extends TestCase
 			$this->equalTo($expected)
 		);
 	}
-
-	/**
-	 * Tests the JDatabaseQuerySqlite::currentTimestamp method.
-	 *
-	 * @return  void
-	 *
-	 * @covers  JDatabaseQuerySqlite::currentTimestamp
-	 * @since   3.4
-	 */
-	public function testCurrentTimestamp()
-	{
-		$this->assertThat(
-			$this->_instance->currentTimestamp(),
-			$this->equalTo('CURRENT_TIMESTAMP')
-		);
-	}
 }

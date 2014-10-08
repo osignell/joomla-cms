@@ -127,7 +127,6 @@ class PluginsModelPlugins extends JModelList
 			$this->translate($result);
 			if (!empty($search))
 			{
-				$search = str_replace(' ', '.*', preg_quote(trim($search), '/'));
 				foreach ($result as $i => $item)
 				{
 					if (!preg_match("/$search/i", $item->name))

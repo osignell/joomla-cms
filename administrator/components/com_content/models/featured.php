@@ -176,7 +176,7 @@ class ContentModelFeatured extends ContentModelArticles
 			}
 			else
 			{
-				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
+				$search = $db->quote('%' . $db->escape($search, true) . '%');
 				$query->where('a.title LIKE ' . $search . ' OR a.alias LIKE ' . $search);
 			}
 		}

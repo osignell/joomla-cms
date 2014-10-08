@@ -31,7 +31,6 @@ class JModuleHelperTest extends TestCaseDatabase
 		$this->saveFactoryState();
 
 		JFactory::$application = $this->getMockCmsApp();
-		JFactory::$session     = $this->getMockSession();
 	}
 
 	/**

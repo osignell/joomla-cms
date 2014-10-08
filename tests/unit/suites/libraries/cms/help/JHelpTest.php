@@ -39,7 +39,7 @@ class JHelpTest extends TestCase
 		// Store the factory state so we can mock the necessary objects
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 		JFactory::$config      = $this->getMockConfig();
 		JFactory::$session     = $this->getMockSession();
 

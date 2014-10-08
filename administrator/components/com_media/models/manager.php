@@ -90,7 +90,7 @@ class MediaModelManager extends JModelLegacy
 		// so both string and integer are supported.
 		if ($asset == 0)
 		{
-			$asset = $input->get('asset', 0, 'cmd');
+			$asset = $input->get('asset', 0, 'string');
 		}
 
 		$author = $input->get('author', 0, 'integer');

@@ -8,15 +8,16 @@
  */
 
 defined('_JEXEC') or die;
-
+?>
+<?php
 if (!empty($this->msg))
 {
 	echo $this->msg;
 }
 else
 {
-	$lang      = JFactory::getLanguage();
-	$myrtl     = $this->newsfeed->rtl;
+	$lang = JFactory::getLanguage();
+	$myrtl = $this->newsfeed->rtl;
 	$direction = " ";
 
 		if ($lang->isRTL() && $myrtl == 0)
@@ -25,7 +26,7 @@ else
 		}
 		elseif ($lang->isRTL() && $myrtl == 1)
 		{
-			$direction = " redirect-ltr";
+				$direction = " redirect-ltr";
 		}
 		elseif ($lang->isRTL() && $myrtl == 2)
 		{
@@ -43,7 +44,7 @@ else
 		{
 			$direction = " redirect-rtl";
 		}
-		$images = json_decode($this->item->images);
+		$images  = json_decode($this->item->images);
 	?>
 	<div class="newsfeed<?php echo $this->pageclass_sfx?><?php echo $direction; ?>">
 	<?php if ($this->params->get('display_num')) :  ?>
@@ -83,7 +84,7 @@ else
 	src="<?php echo htmlspecialchars($images->image_second); ?>" alt="<?php echo htmlspecialchars($images->image_second_alt); ?>"/> </div>
 	<?php endif; ?>
 	<!-- Show Description from Component -->
-	<?php echo $this->item->description; ?>
+<?php echo $this->item->description; ?>
 	<!-- Show Feed's Description -->
 
 	<?php if ($this->params->get('show_feed_description')) : ?>
@@ -103,7 +104,7 @@ else
 	<?php if (!empty($this->rssDoc[0])) { ?>
 	<ol>
 		<?php for ($i = 0; $i < $this->item->numarticles; $i++) { ?>
-	<?php if (empty($this->rssDoc[$i])) { break; } ?>
+
 	<?php
 		$uri = !empty($this->rssDoc[$i]->guid) || !is_null($this->rssDoc[$i]->guid) ? $this->rssDoc[$i]->guid : $this->rssDoc[$i]->uri;
 		$uri = substr($uri, 0, 4) != 'http' ? $this->item->link : $uri;
@@ -125,6 +126,7 @@ else
 					$text = JHtml::_('string.truncate', $text, $this->params->get('feed_character_count'));
 						echo str_replace('&apos;', "'", $text);
 					?>
+
 					</div>
 				<?php endif; ?>
 				</li>

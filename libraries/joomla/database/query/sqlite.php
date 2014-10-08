@@ -260,19 +260,4 @@ class JDatabaseQuerySqlite extends JDatabaseQueryPdo implements JDatabaseQueryPr
 			return "datetime('" . $date . "', '" . $interval . " " . $datePart . "')";
 		}
 	}
-
-	/**
-	 * Gets the current date and time.
-	 *
-	 * Usage:
-	 * $query->where('published_up < '.$query->currentTimestamp());
-	 *
-	 * @return  string
-	 *
-	 * @since   3.4
-	 */
-	public function currentTimestamp()
-	{
-		return 'CURRENT_TIMESTAMP';
-	}
 }

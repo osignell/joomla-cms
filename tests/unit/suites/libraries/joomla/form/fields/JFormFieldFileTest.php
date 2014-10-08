@@ -16,7 +16,7 @@ JFormHelper::loadFieldClass('file');
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldFileTest extends TestCaseDatabase
+class JFormFieldFileTest extends TestCase
 {
 	/**
 	 * Backup of the SERVER superglobal

@@ -38,7 +38,7 @@ class JToolbarTest extends TestCase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 	}
 
 	/**

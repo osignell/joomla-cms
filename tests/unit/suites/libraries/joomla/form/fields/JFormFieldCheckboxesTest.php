@@ -16,7 +16,7 @@ JFormHelper::loadFieldClass('checkboxes');
  * @subpackage  Form
  * @since       11.3
  */
-class JFormFieldCheckboxesTest extends TestCaseDatabase
+class JFormFieldCheckboxesTest extends TestCase
 {
 	/**
 	 * Sets up dependencies for the test.
@@ -31,7 +31,7 @@ class JFormFieldCheckboxesTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->backupServer = $_SERVER;
 

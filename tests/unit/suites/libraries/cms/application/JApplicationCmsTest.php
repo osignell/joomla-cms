@@ -51,14 +51,6 @@ class JApplicationCmsTest extends TestCaseDatabase
 	protected $class;
 
 	/**
-	 * Backup of the SERVER superglobal
-	 *
-	 * @var    array
-	 * @since  3.4
-	 */
-	protected $backupServer;
-
-	/**
 	 * Data for fetchConfigurationData method.
 	 *
 	 * @return  array
@@ -85,14 +77,6 @@ class JApplicationCmsTest extends TestCaseDatabase
 	{
 		parent::setUp();
 
-		$this->saveFactoryState();
-
-		JFactory::$document = $this->getMockDocument();
-		JFactory::$language = $this->getMockLanguage();
-		JFactory::$session  = $this->getMockSession();
-
-		$this->backupServer = $_SERVER;
-
 		$_SERVER['HTTP_HOST'] = self::TEST_HTTP_HOST;
 		$_SERVER['HTTP_USER_AGENT'] = self::TEST_USER_AGENT;
 		$_SERVER['REQUEST_URI'] = self::TEST_REQUEST_URI;
@@ -104,6 +88,12 @@ class JApplicationCmsTest extends TestCaseDatabase
 
 		// Get a new JApplicationCmsInspector instance.
 		$this->class = new JApplicationCmsInspector(null, $config);
+
+		// We are coupled to Document and Language in JFactory.
+		$this->saveFactoryState();
+
+		JFactory::$document = $this->getMockDocument();
+		JFactory::$language = $this->getMockLanguage();
 	}
 
 	/**
@@ -122,8 +112,6 @@ class JApplicationCmsTest extends TestCaseDatabase
 		// Reset some web inspector static settings.
 		JApplicationCmsInspector::$headersSent = false;
 		JApplicationCmsInspector::$connectionAlive = true;
-
-		$_SERVER = $this->backupServer;
 
 		$this->restoreFactoryState();
 
@@ -191,9 +179,9 @@ class JApplicationCmsTest extends TestCaseDatabase
 	 */
 	public function test__constructDependancyInjection()
 	{
-		if (PHP_VERSION == '5.4.29' || PHP_VERSION == '5.5.13' || PHP_MINOR_VERSION == '6')
+		if (PHP_VERSION == '5.4.29' || PHP_VERSION == '5.5.13')
 		{
-			$this->markTestSkipped('Test is skipped due to a PHP bug in versions 5.4.29 and 5.5.13 and a change in behavior in the 5.6 branch');
+			$this->markTestSkipped('Test is skipped due to a PHP bug in PHP versions 5.4.29 and 5.5.13');
 		}
 
 		$mockInput = $this->getMock('JInput', array('test'), array(), '', false);

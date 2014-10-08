@@ -51,8 +51,8 @@ class PlgUserProfile extends JPlugin
 	/**
 	 * Runs on content preparation
 	 *
-	 * @param   string  $context  The context for the data
-	 * @param   object  $data     An object containing the data for the form.
+	 * @param   string   $context  The context for the data
+	 * @param   integer  $data     The user id
 	 *
 	 * @return  boolean
 	 *
@@ -196,7 +196,7 @@ class PlgUserProfile extends JPlugin
 	 * adds additional fields to the user editing form
 	 *
 	 * @param   JForm  $form  The form to be altered.
-	 * @param   mixed  $data  The associated data for the form.
+	 * @param   array  $data  The associated data for the form.
 	 *
 	 * @return  boolean
 	 *
@@ -282,11 +282,6 @@ class PlgUserProfile extends JPlugin
 					&& $this->params->get('profile-require_' . $field, 1) == 0)
 				{
 					$form->removeField($field, 'profile');
-
-					if ($field == 'dob')
-					{
-						$form->removeField('dob_spacer', 'profile');
-					}
 				}
 
 				if ($this->params->get('profile-require_dob', 1) > 0)
@@ -305,11 +300,6 @@ class PlgUserProfile extends JPlugin
 				else
 				{
 					$form->removeField($field, 'profile');
-
-					if ($field == 'dob')
-					{
-						$form->removeField('dob_spacer', 'profile');
-					}
 				}
 
 				if ($this->params->get('register-require_dob', 1) > 0)
@@ -328,11 +318,6 @@ class PlgUserProfile extends JPlugin
 				else
 				{
 					$form->removeField($field, 'profile');
-
-					if ($field == 'dob')
-					{
-						$form->removeField('dob_spacer', 'profile');
-					}
 				}
 
 				if ($this->params->get('profile-require_dob', 1) > 0)
