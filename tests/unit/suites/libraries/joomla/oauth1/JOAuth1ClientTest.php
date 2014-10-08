@@ -71,10 +71,6 @@ class JOAuth1ClientTest extends TestCase
 	 */
 	protected function setUp()
 	{
-		$this->saveFactoryState();
-
-		JFactory::$session = $this->getMockSession();
-
 		$_SERVER['HTTP_HOST'] = 'example.com';
 		$_SERVER['HTTP_USER_AGENT'] = 'Mozilla/5.0';
 		$_SERVER['REQUEST_URI'] = '/index.php';
@@ -102,7 +98,7 @@ class JOAuth1ClientTest extends TestCase
 	 */
 	protected function tearDown()
 	{
-		$this->restoreFactoryState();
+		JFactory::$session = null;
 	}
 
 	/**

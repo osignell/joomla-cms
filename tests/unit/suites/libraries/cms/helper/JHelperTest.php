@@ -51,19 +51,8 @@ class JHelperTest extends TestCaseDatabase
 	{
 		parent::setUp();
 
-		$this->saveFactoryState();
-
 		$this->object = new JHelper;
-		JFactory::$application = $this->getMockCmsApp();
-	}
-
-	/**
-	 * Tears down the fixture, for example, closes a network connection.
-	 * This method is called after a test is executed.
-	 */
-	protected function tearDown()
-	{
-		$this->restoreFactoryState();
+		JFactory::$application = $this->getMockApplication();
 	}
 
 	/**

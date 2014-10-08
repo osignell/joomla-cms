@@ -16,7 +16,7 @@ JFormHelper::loadFieldClass('hidden');
  * @subpackage  Form
  * @since       11.1
  */
-class JFormFieldHiddenTest extends TestCaseDatabase
+class JFormFieldHiddenTest extends TestCase
 {
 	/**
 	 * Sets up the fixture, for example, opens a network connection.

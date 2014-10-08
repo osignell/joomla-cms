@@ -16,7 +16,7 @@ require_once __DIR__ . '/TestHelpers/JHtmlFieldNumber-helper-dataset.php';
  * @subpackage  Form
  * @since       12.1
  */
-class JFormFieldNumberTest extends TestCaseDatabase
+class JFormFieldNumberTest extends TestCase
 {
 	/**
 	 * Backup of the SERVER superglobal
@@ -42,7 +42,7 @@ class JFormFieldNumberTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->backupServer = $_SERVER;
 

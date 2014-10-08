@@ -16,7 +16,7 @@ JFormHelper::loadFieldClass('color');
  * @subpackage  Form
  * @since       12.1
  */
-class JFormFieldColorTest extends TestCaseDatabase
+class JFormFieldColorTest extends TestCase
 {
 	/**
 	 * This method is called before the first test of this test class is run.

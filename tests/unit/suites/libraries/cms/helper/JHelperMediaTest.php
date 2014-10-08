@@ -38,8 +38,7 @@ class JHelperMediaTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
-		JFactory::$session     = $this->getMockSession();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->object = new JHelperMedia;
 	}

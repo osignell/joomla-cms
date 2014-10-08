@@ -57,7 +57,6 @@ abstract class ModLanguagesHelper
 			{
 				$associations = MenusHelper::getAssociations($active->id);
 			}
-
 			// Load component associations
 			$option = $app->input->get('option');
 			$eName = JString::ucfirst(JString::str_ireplace('com_', '', $option));
@@ -92,8 +91,7 @@ abstract class ModLanguagesHelper
 			{
 				unset($languages[$i]);
 			}
-			else
-			{
+			else {
 				$language->active = $language->lang_code == $lang->getTag();
 
 				if (JLanguageMultilang::isEnabled())

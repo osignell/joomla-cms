@@ -300,8 +300,6 @@ class JFactoryTest extends TestCase
 	 */
 	public function testGetUserInstance()
 	{
-		JFactory::$session = $this->getMockSession();
-
 		$this->assertInstanceOf(
 			'JUser',
 			JFactory::getUser(),

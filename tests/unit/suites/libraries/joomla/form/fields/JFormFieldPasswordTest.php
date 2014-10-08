@@ -41,7 +41,7 @@ class JFormFieldPasswordTest extends TestCase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 		JFactory::$database    = $this->getMockDatabase();
 
 		$this->backupServer = $_SERVER;

@@ -36,7 +36,7 @@ class JUcmTypeTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->object = new JUcmType('com_content.article');
 	}

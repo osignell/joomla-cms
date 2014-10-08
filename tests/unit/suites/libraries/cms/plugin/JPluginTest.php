@@ -32,7 +32,7 @@ class JPluginTest extends TestCase
 	{
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 		JFactory::$database    = $this->getMockDatabase();
 	}
 

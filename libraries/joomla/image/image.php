@@ -744,19 +744,16 @@ class JImage
 		$width   = $this->sanitizeWidth($width, $height);
 		$height  = $this->sanitizeHeight($height, $width);
 
-		$resizewidth = $width;
-		$resizeheight = $height;
-
 		if (($this->getWidth() / $width) < ($this->getHeight() / $height))
 		{
-			$resizeheight = 0;
+			$this->resize($width, 0, false);
 		}
 		else
 		{
-			$resizewidth = 0;
+			$this->resize(0, $height, false);
 		}
 
-		return $this->resize($resizewidth, $resizeheight, $createNew)->crop($width, $height, null, null, false);
+		return $this->crop($width, $height, null, null, $createNew);
 	}
 
 	/**

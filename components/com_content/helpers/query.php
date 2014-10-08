@@ -103,7 +103,7 @@ class ContentHelperQuery
 				break;
 
 			case 'front' :
-				$orderby = 'a.featured DESC, fp.ordering, ' . $queryDate . ' DESC ';
+				$orderby = 'a.featured DESC, fp.ordering';
 				break;
 
 			default :

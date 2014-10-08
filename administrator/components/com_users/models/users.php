@@ -329,13 +329,13 @@ class UsersModelUsers extends JModelList
 		if ($this->getState('filter.search') !== '' && $this->getState('filter.search') !== null)
 		{
 			// Escape the search token.
-			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($this->getState('filter.search')), true) . '%'));
+			$token = $db->quote('%' . $db->escape($this->getState('filter.search')) . '%');
 
 			// Compile the different search clauses.
 			$searches   = array();
-			$searches[] = 'a.name LIKE ' . $search;
-			$searches[] = 'a.username LIKE ' . $search;
-			$searches[] = 'a.email LIKE ' . $search;
+			$searches[] = 'a.name LIKE ' . $token;
+			$searches[] = 'a.username LIKE ' . $token;
+			$searches[] = 'a.email LIKE ' . $token;
 
 			// Add the clauses to the query.
 			$query->where('(' . implode(' OR ', $searches) . ')');

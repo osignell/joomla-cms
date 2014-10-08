@@ -7,6 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
+jimport('joomla.cache.cache');
+
 /**
  * Mock classes
  *
@@ -19,7 +21,7 @@
  *
  * @since       11.1
  */
-class JCacheStorageTest_Main extends TestCase
+class JCacheStorageTest_Main extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * Test setUp
@@ -30,23 +32,7 @@ class JCacheStorageTest_Main extends TestCase
 	{
 		parent::setUp();
 
-		$this->saveFactoryState();
-
-		JFactory::$session = $this->getMockSession();
-
 		require_once dirname(__DIR__) . '/controller/JCacheControllerRaw.php';
-	}
-
-	/**
-	 * Overrides the parent tearDown method.
-	 *
-	 * @return  void
-	 */
-	protected function tearDown()
-	{
-		$this->restoreFactoryState();
-
-		parent::tearDown();
 	}
 
 	/**

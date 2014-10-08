@@ -40,8 +40,7 @@ class JUserTest extends TestCaseDatabase
 
 		$this->object = new JUser('42');
 
-		JFactory::$application = $this->getMockCmsApp();
-		JFactory::$session     = $this->getMockSession();
+		JFactory::$application = $this->getMockApplication();
 	}
 
 	/**

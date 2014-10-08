@@ -21,7 +21,6 @@ require_once JPATH_ROOT . '/components/com_content/helpers/route.php';
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
-JHtml::_('formbehavior.chosen', 'select');
 
 $extension	= $this->escape($this->state->get('filter.extension'));
 $function  	= $app->input->getCmd('function', 'jSelectCategory');
@@ -145,7 +144,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						<?php endif; ?>
 					</td>
 					<td class="center hidden-phone">
-						<?php echo (int) $item->id; ?>
+						<?php echo (int) $item->id; ?></span>
 					</td>
 				</tr>
 			<?php endforeach; ?>

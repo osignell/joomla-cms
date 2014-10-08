@@ -38,7 +38,7 @@ class JHtmlBatchTest extends TestCaseDatabase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 		JFactory::$language = JLanguage::getInstance('en-GB', false);
 
 		$this->backupServer = $_SERVER;

@@ -115,11 +115,6 @@ abstract class JStringPunycode
 			$newuri .= '?' . $parsed['query'];
 		}
 
-		if (!empty($parsed['fragment']))
-		{
-			$newuri .= '#' . $parsed['fragment'];
-		}
-
 		return $newuri;
 	}
 
@@ -184,11 +179,6 @@ abstract class JStringPunycode
 		if (!empty($parsed['query']))
 		{
 			$newuri .= '?' . $parsed['query'];
-		}
-
-		if (!empty($parsed['fragment']))
-		{
-			$newuri .= '#' . $parsed['fragment'];
 		}
 
 		return $newuri;

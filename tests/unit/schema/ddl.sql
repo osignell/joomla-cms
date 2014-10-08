@@ -697,6 +697,5 @@ CREATE TABLE `jos_dbtest_composite` (
   `publish_up` TEXT NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` TEXT NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` INTEGER NOT NULL DEFAULT '0',
-  `params` TEXT NOT NULL DEFAULT '',
   CONSTRAINT `idx_dbtest_composite` PRIMARY KEY (`id1`,`id2`)
 );

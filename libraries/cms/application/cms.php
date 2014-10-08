@@ -304,32 +304,22 @@ class JApplicationCms extends JApplicationWeb
 				$option = $this->get($name . '_reset_password_option', '');
 				$view = $this->get($name . '_reset_password_view', '');
 				$layout = $this->get($name . '_reset_password_layout', '');
-				$tasks = $this->get($name . '_reset_password_tasks', '');
+				$tasks = explode(',', $this->get($name . '_reset_password_tasks', ''));
 			}
 
-			$task = $this->input->getCmd('task', '');
-
-			// Check task or option/view/layout
-			if (!empty($task))
+			if ($this->input->getCmd('option', '') != $option || $this->input->getCmd('view', '') != $view || $this->input->getCmd('layout', '') != $layout)
 			{
-				$tasks = explode(',', $tasks);
-
-				// Check full task version "option/task"
-				if (array_search($this->input->getCmd('option', '') . '/' . $task, $tasks) === false)
-				{
-					// Check short task version, must be on the same option of the view
-					if ($this->input->getCmd('option', '') != $option || array_search($task, $tasks) === false)
-					{
-						// Not permitted task
-						$redirect = true;
-					}
-				}
+				// Requested a different page
+				$redirect = true;
 			}
 			else
 			{
-				if ($this->input->getCmd('option', '') != $option || $this->input->getCmd('view', '') != $view || $this->input->getCmd('layout', '') != $layout)
+				$task = $this->input->getCmd('task', '');
+
+				// Empty task are always permitted
+				if (!empty($task) && array_search($task, $tasks) === false)
 				{
-					// Requested a different option/view/layout
+					// Not permitted task
 					$redirect = true;
 				}
 			}
@@ -992,7 +982,7 @@ class JApplicationCms extends JApplicationWeb
 				}
 				else
 				{
-					$type = 'message';
+					$type = null;
 				}
 
 				// Enqueue the message

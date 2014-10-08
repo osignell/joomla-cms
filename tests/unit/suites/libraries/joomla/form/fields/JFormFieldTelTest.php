@@ -32,7 +32,7 @@ class JFormFieldTelTest extends TestCase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockCmsApp();
+		JFactory::$application = $this->getMockApplication();
 
 		$this->backupServer = $_SERVER;
 
