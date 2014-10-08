@@ -188,12 +188,12 @@ final class JApplicationSite extends JApplicationCms
 			$document->setGenerator('Joomla! - Open Source Content Management');
 		}
 
+		$contents = JComponentHelper::renderComponent($component);
+		$document->setBuffer($contents, 'component');
+
 		// Trigger the onAfterDispatch event.
 		JPluginHelper::importPlugin('system');
 		$this->triggerEvent('onAfterDispatch');
-
-		$contents = JComponentHelper::renderComponent($component);
-		$document->setBuffer($contents, 'component');
 	}
 
 	/**
@@ -224,7 +224,7 @@ final class JApplicationSite extends JApplicationCms
 		 * $this->input->getCmd('option'); or $this->input->getCmd('view');
 		 * ex: due of the sef urls
 		 */
-		$this->checkUserRequireReset('com_users', 'profile', 'edit', 'profile.save,profile.apply');
+		$this->checkUserRequireReset('com_users', 'profile', 'edit', 'com_users/profile.save,com_users/profile.apply,com_users/user.logout');
 
 		// Dispatch the application
 		$this->dispatch();

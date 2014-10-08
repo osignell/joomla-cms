@@ -17,7 +17,7 @@ include_once 'JFormDataHelper.php';
  * @subpackage  Form
  * @since       11.1
  */
-class JFormTest extends TestCase
+class JFormTest extends TestCaseDatabase
 {
 	/**
 	 * Backup of the SERVER superglobal
@@ -41,7 +41,7 @@ class JFormTest extends TestCase
 
 		$this->saveFactoryState();
 
-		JFactory::$application = $this->getMockApplication();
+		JFactory::$application = $this->getMockCmsApp();
 
 		$this->backupServer = $_SERVER;
 
@@ -1551,14 +1551,16 @@ class JFormTest extends TestCase
 	 */
 	public function testLoadFieldType()
 	{
+		$inspector = new JFormInspector('test');
+
 		$this->assertThat(
-			JFormInspector::loadFieldType('bogus'),
+			$inspector->loadFieldType('bogus'),
 			$this->isFalse(),
 			'Line:' . __LINE__ . ' loadFieldType should return false if class not found.'
 		);
 
 		$this->assertThat(
-			(JFormInspector::loadFieldType('list') instanceof JFormFieldList),
+			($inspector->loadFieldType('list') instanceof JFormFieldList),
 			$this->isTrue(),
 			'Line:' . __LINE__ . ' loadFieldType should return the correct class.'
 		);
@@ -1567,25 +1569,25 @@ class JFormTest extends TestCase
 		JForm::addFieldPath(__DIR__ . '/_testfields');
 
 		$this->assertThat(
-			(JFormInspector::loadFieldType('test') instanceof JFormFieldTest),
+			($inspector->loadFieldType('test') instanceof JFormFieldTest),
 			$this->isTrue(),
 			'Line:' . __LINE__ . ' loadFieldType should return the correct custom class.'
 		);
 
 		$this->assertThat(
-			(JFormInspector::loadFieldType('foo.bar') instanceof FooFormFieldBar),
+			($inspector->loadFieldType('foo.bar') instanceof FooFormFieldBar),
 			$this->isTrue(),
 			'Line:' . __LINE__ . ' loadFieldType should return the correct custom class.'
 		);
 
 		$this->assertThat(
-			(JFormInspector::loadFieldType('modal_foo') instanceof JFormFieldModal_Foo),
+			($inspector->loadFieldType('modal_foo') instanceof JFormFieldModal_Foo),
 			$this->isTrue(),
 			'Line:' . __LINE__ . ' loadFieldType should return the correct custom class.'
 		);
 
 		$this->assertThat(
-			(JFormInspector::loadFieldType('foo.modal_bar') instanceof FooFormFieldModal_Bar),
+			($inspector->loadFieldType('foo.modal_bar') instanceof FooFormFieldModal_Bar),
 			$this->isTrue(),
 			'Line:' . __LINE__ . ' loadFieldType should return the correct custom class.'
 		);
