@@ -507,7 +507,12 @@ class PlgSystemLanguageFilter extends JPlugin
 
 			if (empty($lang_code))
 			{
-				$lang_code = self::$default_lang;
+				$tag = $app->getLanguage()->getTag();
+				if ($tag) {
+					$lang_code = $tag;
+				} else {
+					$lang_code = self::$default_lang;
+				}
 			}
 
 			if ($lang_code != self::$tag)
